@@ -90,15 +90,21 @@ class ViewLayer {
       'aList': document.getElementById('attendees-list'),
       'date': document.getElementById('date'),
       'img': document.getElementById('avatar'),
+      'role': document.getElementById('role'),
     }
     this.moreEventListener()
     this.showData(data)
     this.showAttendeesList(data)
+    this.roleEventListener(data)
+
   }
   moreEventListener(){
     this.elements.more.addEventListener("click", (e) => {
       e.preventDefault();
+      this.preview: document.querySelector.remove('.preview'),
       // code for task #3
+       ----------------
+      })
     });
   }
   showAttendeesList(data){
@@ -106,15 +112,26 @@ class ViewLayer {
       let element = document.createElement('li');
       element.classList.add('list-group-item');
       let img = document.createElement('img')
-      img.src = data.attendees[key].image
-      element.innerHTML = data.attendees[key].name;
+
+      // the bug 
+      img.classList = data.attendees[i].image;
+      element.innerHTML = data.attendees[i].name;
       this.elements.aList.appendChild(element).appendChild(img);
-    };
+    }
   }
+
   showData(data = {}){
     // here comes code for task #7
-    this.elements.date.innerHTML = `<button class=\"btn\">${ data.meta.day }</button>${data.meta.month}`
+    //var d = new Date ();
+    document.getElementByClass("date").innerHTML = d.toDateString();
+    this.elements.date.innerHTML = `<button class=\"btn\">${ data.meta.day}</button>${data.meta.month}`
     this.elements.img.src = data.organizer.img
   }
 }
+
+
+
+var d = new Date();
+document.getElementById("demo").innerHTML = d.getTime();
+
 const instance_of_view = new ViewLayer();
